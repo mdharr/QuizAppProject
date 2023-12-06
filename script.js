@@ -23,5 +23,8 @@ formElement.addEventListener('submit', e => {
     e.preventDefault()
     let selectedAnswers = answerInputs.filter(answer => answer.checked)
     console.log(selectedAnswers)
+    selectedAnswers.forEach(answer => {
+        const parentElement = answer.closest('.question-item')
 
+    })
 })
