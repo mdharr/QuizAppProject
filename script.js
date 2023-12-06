@@ -20,5 +20,6 @@ const alertElement = document.querySelector('#alert')
 //    6. BONUS: Make sure unanswered questions show up as incorrect. The easiest way to do this is to add the incorrect class and removing the correct class from all question items before checking the correct answers
 //    7. BONUS: If all answers are correct show the element with the id `alert` and hide it after one second (look into setTimeout) (use the class active to show the alert and remove the class to hide it)
 formElement.addEventListener('submit', e => {
+    e.preventDefault()
 
 })
