@@ -21,7 +21,7 @@ const alertElement = document.querySelector('#alert')
 //    7. BONUS: If all answers are correct show the element with the id `alert` and hide it after one second (look into setTimeout) (use the class active to show the alert and remove the class to hide it)
 formElement.addEventListener('submit', e => {
     e.preventDefault()
-    let selectedAnswers = answerInputs.filter(answer => answer.checked)
+    const selectedAnswers = answerInputs.filter(answer => answer.checked)
     console.log(selectedAnswers)
     answerInputs.forEach(answer => answer.closest('.question-item').classList.add('incorrect'))
     selectedAnswers.forEach(answer => {
@@ -36,8 +36,15 @@ formElement.addEventListener('submit', e => {
             console.log(parentElement)
         }
     })
-    selectedAnswers.every(answer => answer.value === 'true') ? alertElement.classList.add('active') : ''
+    const allCorrect = selectedAnswers.every(answer => answer.value === 'true')
+    const allAnswered = questionElements.length === selectedAnswers.length
+    let alertActive = false
+    if(allCorrect && allAnswered) {
+        alertElement.classList.add('active')
+        alertActive = true
+    }
     setTimeout(() => {
-        alertElement.classList.contains('active') ? alertElement.classList.remove('active') : ''
-    }, 2000)
+        alertElement.classList.remove('active')
+        alertActive = false
+    }, 1000)
 })
