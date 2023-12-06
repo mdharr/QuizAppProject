@@ -21,5 +21,7 @@ const alertElement = document.querySelector('#alert')
 //    7. BONUS: If all answers are correct show the element with the id `alert` and hide it after one second (look into setTimeout) (use the class active to show the alert and remove the class to hide it)
 formElement.addEventListener('submit', e => {
     e.preventDefault()
+    let selectedAnswers = answerInputs.filter(answer => answer.checked)
+    console.log(selectedAnswers)
 
 })
