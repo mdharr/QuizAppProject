@@ -36,4 +36,8 @@ formElement.addEventListener('submit', e => {
             console.log(parentElement)
         }
     })
+    selectedAnswers.every(answer => answer.value === 'true') ? alertElement.classList.add('active') : ''
+    setTimeout(() => {
+        alertElement.classList.contains('active') ? alertElement.classList.remove('active') : ''
+    }, 2000)
 })
