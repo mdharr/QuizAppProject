@@ -23,9 +23,12 @@ formElement.addEventListener('submit', e => {
     e.preventDefault()
     let selectedAnswers = answerInputs.filter(answer => answer.checked)
     console.log(selectedAnswers)
+    answerInputs.forEach(answer => answer.closest('.question-item').classList.add('incorrect'))
     selectedAnswers.forEach(answer => {
         const parentElement = answer.closest('.question-item')
+        parentElement.classList.add('incorrect')
         if(answer.value === 'true') {
+            parentElement.classList.remove('incorrect')
             parentElement.classList.add('correct')
             console.log(parentElement)
         } else {
