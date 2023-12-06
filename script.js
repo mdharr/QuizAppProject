@@ -25,6 +25,12 @@ formElement.addEventListener('submit', e => {
     console.log(selectedAnswers)
     selectedAnswers.forEach(answer => {
         const parentElement = answer.closest('.question-item')
-
+        if(answer.value === 'true') {
+            parentElement.classList.add('correct')
+            console.log(parentElement)
+        } else {
+            parentElement.classList.add('incorrect')
+            console.log(parentElement)
+        }
     })
 })
