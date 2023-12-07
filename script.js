@@ -22,7 +22,7 @@ const alertElement = document.querySelector('#alert')
 formElement.addEventListener('submit', e => {
     e.preventDefault()
     const selectedAnswers = answerInputs.filter(answer => answer.checked)
-    console.log(selectedAnswers)
+    
     answerInputs.forEach(answer => answer.closest('.question-item').classList.add('incorrect'))
     selectedAnswers.forEach(answer => {
         const parentElement = answer.closest('.question-item')
@@ -30,12 +30,11 @@ formElement.addEventListener('submit', e => {
         if(answer.value === 'true') {
             parentElement.classList.remove('incorrect')
             parentElement.classList.add('correct')
-            console.log(parentElement)
         } else {
             parentElement.classList.add('incorrect')
-            console.log(parentElement)
         }
     })
+
     const allCorrect = selectedAnswers.every(answer => answer.value === 'true')
     const allAnswered = questionElements.length === selectedAnswers.length
     let alertActive = false
@@ -43,8 +42,10 @@ formElement.addEventListener('submit', e => {
         alertElement.classList.add('active')
         alertActive = true
     }
-    setTimeout(() => {
-        alertElement.classList.remove('active')
-        alertActive = false
-    }, 1000)
+    if(alertActive) {
+        setTimeout(() => {
+            alertElement.classList.remove('active')
+            alertActive = false
+        }, 1000)
+    }
 })
